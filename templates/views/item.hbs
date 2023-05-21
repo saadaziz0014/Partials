@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <title>Items</title>
+</head>
+<body>
+    {{>header}}
+    <section class="text-gray-400 bg-gray-900 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-col text-center w-full mb-20">
+      <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-white">Items</h1>
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">These all are the random items</p>
+    </div>
+    <div class="lg:w-2/3 w-full mx-auto overflow-auto">
+      <table class="table-auto w-full text-left whitespace-no-wrap">
+        <thead>
+          <tr>
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800 rounded-tl rounded-bl">ID</th>
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-white text-sm bg-gray-800">Title</th>
+            <th class="w-10 title-font tracking-wider font-medium text-white text-sm bg-gray-800 rounded-tr rounded-br"></th>
+          </tr>
+        </thead>
+        <tbody>
+            {{#each items}}
+          <tr>
+            <td class="px-4 py-3">{{id}}</td>
+            <td class="px-4 py-3">{{title}}</td>
+            <td class="w-10 text-center">
+              <input name="plan" type="radio">
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    <div class="flex pl-4 mt-4 lg:w-2/3 w-full mx-auto">
+  <form action="/add-item" method="post">
+    <button class="flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" type="submit">Push</button>
+  </form>
+  <div class="ml-auto">
+    <form action="/remove-item" method="post">
+      <button class="flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" type="submit">Pop</button>
+    </form>
+  </div>
+  <div class="ml-auto">
+    <form action="/clear-item" method="post">
+      <button class="flex text-white bg-red-700 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" type="submit">Clear</button>
+    </form>
+  </div>
+</div>
+
+  </div>
+</section>
+    {{>footer}}
+</body>
+</html>
